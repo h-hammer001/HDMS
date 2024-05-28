@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>ランダム選曲(高難易度のみ)</title>
+<style>
+button.aaa {
+    width: 100px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #68779a;
+    background: #cbe8fa;
+    cursor: pointer;
+    font-size: 150%;
+}
+form {
+  width: 400px;
+  margin: 0 left;
+}
+</style>
+</head>
+<body>
+<h1>高難易度ランダム選曲</h1>
+<p>高難易度(MAS33~37,APD33~37)の中から難易度を選び、ランダムで選曲できる機構です</p>
+<form name="diflv">
+  <fieldset>
+    <legend>難易度を選んでください</legend>
+    MASTER:
+      <label><input type="checkbox" id="M_XXXIII" name="dl" value="MASTER 33" checked>33</label>
+      <label><input type="checkbox" id="M_XXXIV" name="dl" value="MASTER 34" checked>34</label>
+      <label><input type="checkbox" id="M_XXXV" name="dl" value="MASTER 35" checked>35</label>
+      <label><input type="checkbox" id="M_XXXVI" name="dl" value="MASTER 36" checked>36</label>
+      <label><input type="checkbox" id="M_XXXVII" name="dl" value="MASTER 37" checked>37</label>
+      <br>
+      APPEND:
+      <label><input type="checkbox" id="A_XXXIII" name="dl" value="APPEND 33" disabled>33</label>
+      <label><input type="checkbox" id="A_XXXIV" name="dl" value="APPEND 34" checked>34</label>
+      <label><input type="checkbox" id="A_XXXV" name="dl" value="APPEND 35" checked>35</label>
+      <label><input type="checkbox" id="A_XXXVI" name="dl" value="APPEND 36" checked>36</label>
+      <label><input type="checkbox" id="A_XXXVII" name="dl" value="APPEND 37" checked>37</label>
+      <label><input type="checkbox" id="A_XXXIIX" name="dl" value="APPEND 38" disabled>38</label>
+  </fieldset>
+</form>
+<p id="random_object"></p>
+<p id="random_seed"></p>
+<button type="button" name="name" onclick="random()" class="aaa">選曲</button>
+<h1 id="result"></h1>
+<script type="text/javascript">
+function random(){
+var flag = false;
+var rand_m = ["tell your world"];
+var rand_c = 0;
+document.getElementById("random_seed").textContent = '';
+    for(var i=0; i<document.diflv.dl.length;i++){
+        if(document.diflv.dl[i].checked){
+            flag = true;
+            document.getElementById("random_object").textContent = '選択中の難易度';
+            document.getElementById("random_seed").textContent += document.diflv.dl[i].value;
+            document.getElementById("random_seed").textContent += ',';
+            if(i == 0){
+            rand_m.push("嬢王(MAS)");
+            rand_m.push("ロストワンの号哭");
+            rand_m.push("ゴーストルール");
+            rand_m.push("初音天地開闢神話");
+            rand_m.push("MarbleBlue.(MAS)");
+            rand_m.push("僕らの16bit戦争");
+            rand_c = rand_c + 6;
+            }else if(i == 1){
+            rand_m.push("ÅMARA(大未来電脳)");
+            rand_m.push("おぎゃりないざー(MAS)");
+            rand_m.push("初音ミクの激唱");
+            rand_m.push("腐れ外道とちょこれゐと");
+            rand_c = rand_c + 4;
+            }else if(i == 2){
+            rand_m.push("六兆年と一夜物語");
+            rand_m.push("エンドマークに希望と涙を添えて");
+            rand_m.push("初音ミクの消失");
+            rand_m.push("マシンガンポエムドール");
+            rand_m.push("Don't fight the music");
+            rand_c = rand_c + 5;
+            }else if(i == 3){
+            rand_m.push("the EmpErroR");
+            rand_c = rand_c + 1;
+            }else if(i == 4){
+            rand_m.push("What's up? Pop!");
+            rand_m.push("ヤミナベ!!!!");
+            rand_m.push("人生");
+            rand_c = rand_c + 3;
+            }else if(i == 5){
+            //rand_m.push("このメッセージは本来出現しないようになってるけど、もしでたら制作者に教えてね！");
+            //rand_c = rand_c + 0;
+            }else if(i == 6){
+            rand_m.push("ヒバナ-Reloaded-(APD)");
+            rand_m.push("東京テディベア(APD)");
+            rand_c = rand_c + 2;
+            }else if(i == 7){
+            rand_m.push("Brand New Day(APD)");
+            rand_m.push("folern(APD)");
+            rand_m.push("Sage(APD)");
+            rand_m.push("嬢王(APD)");
+            rand_m.push("超最終鬼畜妹フランドール・S(APD)");
+            rand_c = rand_c + 5;
+            }else if(i == 8){
+            rand_m.push("MarbleBlue.(APD)");
+            rand_c = rand_c + 1;
+            }else if(i == 9){
+            rand_m.push("おぎゃりないざー(APD)");
+            rand_c = rand_c + 1;
+            }else if(i == 10){
+            //rand_m.push("このメッセージは本来出現しないようになってるけど、もしでたら制作者に教えてね！");
+            //rand_c = rand_c + 0;
+            }
+        }
+      }
+    if(!flag){ 
+        alert("難易度が選択されていません。");
+        document.getElementById("random_object").textContent = '選択中の難易度';
+        document.getElementById("random_seed").textContent = 'なし';
+    }
+    rand_m.shift();
+    var RN = Math.floor( Math.random() * rand_c );
+    document.getElementById("result").textContent = '選ばれたのは、' + rand_m[RN] + 'でした。';
+}
+</script>
+</body>
+</html>
