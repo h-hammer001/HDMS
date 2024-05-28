@@ -116,6 +116,8 @@ document.getElementById("random_seed").textContent = '';
         document.getElementById("random_seed").textContent = 'なし';
     }
     rand_m.shift();
+    if(rand_c == 0){
+    }else{
     var RN = Math.floor( Math.random() * rand_c );
     document.getElementById("result").textContent = '選ばれたのは、' + rand_m[RN] + 'でした。';
 }
