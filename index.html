@@ -89,11 +89,8 @@ document.getElementById("random_object").textContent = '選択中の難易度';
 document.getElementById("random_seed").textContent = 'なし';
 }else{
 rand_m.shift();
-rand();
+var RN = Math.floor( Math.random() * rand_c );
 document.getElementById("result").textContent = '選ばれたのは、' + rand_m[RN] + 'でした。';
-if(RN2 == 1){
-document.getElementById("result").textContent = '選ばれたのは、綾鷹でした。';
-}
 if(document.getElementById("dani_dojo").checked){
 var RN = Math.floor( Math.random() * rand_c );
 document.getElementById("result1").textContent = '選ばれたのは、' + rand_m[RN] + 'でした。';
@@ -104,10 +101,6 @@ document.getElementById("result1").textContent = '';
 document.getElementById("result2").textContent = '';
 }
 }
-}
-function rand(){
-var RN = Math.floor( Math.random() * rand_c );
-var RN2 = Math.floor( Math.random() * 10000 );
 }
 </script>
 </body>
